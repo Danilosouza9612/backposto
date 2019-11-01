@@ -3,11 +3,11 @@ package com.meuposto.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.meuposto.model.Cliente;
@@ -33,9 +33,14 @@ public class ClienteController {
 	}
 	
 	@PostMapping("/query04")
-	public ResponseEntity<?> cadastrarCliente(String cpf,String nome){
-		clienteRepository.cadastrarCliente(cpf,nome);
-		return ResponseEntity.ok("Novo cliente cadastrado com sucesso");
+	public void cadastrarCliente(@RequestParam String cpf, @RequestParam String nome) {
+		clienteRepository.cadastrarCliente(cpf, nome);
 	}
+	
+	/*@PostMapping("/query04")
+	public void cadastrarCliente(String cpf,String nome){
+		clienteRepository.cadastrarCliente(cpf,nome);
+		//return ResponseEntity.ok("Novo cliente cadastrado com sucesso");
+	}*/
 
 }

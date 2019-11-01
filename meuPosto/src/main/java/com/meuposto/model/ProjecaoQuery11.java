@@ -6,6 +6,6 @@ public interface ProjecaoQuery11 {
 	
 	String getCpf();
 
-	int getId();
+	int getFrequencia();
 
 }

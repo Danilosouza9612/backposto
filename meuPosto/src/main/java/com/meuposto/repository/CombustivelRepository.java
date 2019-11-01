@@ -14,7 +14,7 @@ public interface CombustivelRepository extends JpaRepository<Combustivel, Intege
 	// 10)Informar a quantidade de abastecimentos de cada combustível em um
 	// determinado posto
 
-	@Query(value = "select count(cb.id), p.cnpj, cb.nome from abastecimento as a " + "inner join bomba as b "
+	@Query(value = "select count(cb.id), cb.nome from abastecimento as a " + "inner join bomba as b "
 			+ "on b.id = a.bomba_id " + "inner join posto as p " + "on b.posto_id = p.id "
 			+ "inner join combustivel as cb " + "on cb.id = b.combustivel_id " + "where p.id = :id_param "
 			+ "group by cb.id", nativeQuery = true)

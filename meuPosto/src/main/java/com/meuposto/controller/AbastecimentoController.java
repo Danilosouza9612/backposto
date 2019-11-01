@@ -4,11 +4,11 @@ import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.meuposto.model.Abastecimento;
@@ -28,8 +28,9 @@ public class AbastecimentoController {
 	}
 	
 	@PostMapping("/query05")
-	public ResponseEntity<?> cadastrarAbastecimento(Date data,float litros,int bombaId,String cpf,String nome){
+	public void cadastrarAbastecimento(@RequestParam Date data,@RequestParam float litros,@RequestParam int bombaId,@RequestParam String cpf,@RequestParam String nome){
 		abastecimentoRepository.cadastrarAbastecimento(data,litros,bombaId,cpf,nome);
-		return ResponseEntity.ok("Novo abastecimento cadastrado com sucesso");
+		//return ResponseEntity.ok("Novo abastecimento cadastrado com sucesso");
+		//return ResponseEntity.status(HttpStatus.ACCEPTED).body("Novo abastecimento cadastrado com sucesso");
 	}
 }
