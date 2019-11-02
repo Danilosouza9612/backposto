@@ -35,5 +35,5 @@ public class BombaController {
 	public int getBombaInferior1000Litros(@RequestParam int id) {
 		return bombaRepository.getBombaInferior1000Litros(id);
 	}
-	
+
 }

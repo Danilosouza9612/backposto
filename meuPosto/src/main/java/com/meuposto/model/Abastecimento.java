@@ -30,11 +30,9 @@ public class Abastecimento {
 	private Bomba bomba;
 
 	@JsonCreator
-	public Abastecimento(@JsonProperty("data") String data,
-						 @JsonProperty("qtdLitros") float litros,
-						 @JsonProperty("bombaId") int bombaId,
-						 @JsonProperty("cpf") String cpf,
-						 @JsonProperty("nome") String nome) throws IOException {
+	public Abastecimento(@JsonProperty("data") String data, @JsonProperty("qtdLitros") float litros,
+			@JsonProperty("bombaId") int bombaId, @JsonProperty("cpf") String cpf, @JsonProperty("nome") String nome)
+			throws IOException {
 		this.data = DateDeserialize.deserialize(data);
 		this.qtdLitros = litros;
 		this.bomba = new Bomba();
@@ -43,7 +41,7 @@ public class Abastecimento {
 		this.cliente.setCpf(cpf);
 		this.cliente.setNome(nome);
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -87,6 +85,7 @@ public class Abastecimento {
 	public Bomba getBomba() {
 		return bomba;
 	}
+
 	public void setBomba(Bomba bomba) {
 		this.bomba = bomba;
 	}

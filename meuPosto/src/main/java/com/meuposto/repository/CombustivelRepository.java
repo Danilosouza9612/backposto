@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import com.meuposto.model.Combustivel;
 import com.meuposto.model.ProjecaoQuery10;
 
+@Repository
 public interface CombustivelRepository extends JpaRepository<Combustivel, Integer> {
 
 	// 10)Informar a quantidade de abastecimentos de cada combustível em um

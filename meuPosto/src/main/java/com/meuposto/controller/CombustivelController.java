@@ -20,7 +20,7 @@ public class CombustivelController {
 
 	@Autowired
 	CombustivelRepository combustivelRepository;
-	
+
 	@GetMapping("/listar")
 	public List<Combustivel> listarCombustiveis() {
 		return combustivelRepository.findAll();
@@ -30,5 +30,5 @@ public class CombustivelController {
 	public List<ProjecaoQuery10> getQtdAbastecimento(@RequestParam int id) {
 		return combustivelRepository.getQtdAbastecimento(id);
 	}
-	
+
 }

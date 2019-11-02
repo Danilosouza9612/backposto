@@ -1,12 +1,11 @@
 package com.meuposto.controller;
 
-
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
 
-public class DateDeserialize{
+public class DateDeserialize {
 
 	public static Date deserialize(String data) throws IOException {
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");

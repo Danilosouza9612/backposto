@@ -6,8 +6,8 @@ import java.sql.SQLException;
 import java.sql.Date;
 import com.meuposto.model.Abastecimento;
 
-public class AbastecimentoSQL{
-		
+public class AbastecimentoSQL {
+
 	public void novoAbastecimento(Abastecimento abastecimento) throws SQLException {
 		Connection connection = new ConexaoSQL().getConnection();
 		String sql = "CALL novo_abastecimento(?,?,?,?,?)";
@@ -17,7 +17,6 @@ public class AbastecimentoSQL{
 		statement.setInt(3, abastecimento.getBomba().getId());
 		statement.setString(4, abastecimento.getCliente().getCpf());
 		statement.setString(5, abastecimento.getCliente().getNome());
-		
 		statement.execute();
 		statement.close();
 		connection.close();

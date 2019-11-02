@@ -13,26 +13,27 @@ import org.springframework.web.bind.annotation.RestController;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.meuposto.model.Abastecimento;
-import com.meuposto.repository.AbastecimentoSQL;
+import com.meuposto.model.AbastecimentoBomba;
+import com.meuposto.repository.AbastecimentoBombaSQL;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/abastecimento")
-public class AbastecimentoController {
+@RequestMapping("/abastecimento_bomba")
+public class AbastecimentoBombaController {
 
-	private AbastecimentoSQL absSQL;
+	private AbastecimentoBombaSQL absBombaSQL;
 
-	public AbastecimentoController() {
-		this.absSQL = new AbastecimentoSQL();
+	public AbastecimentoBombaController() {
+		this.absBombaSQL = new AbastecimentoBombaSQL();
 	}
 
-	@PostMapping("/query05")
-	public ResponseEntity<?> cadastrarAbastecimento(@RequestBody String body)
+	@PostMapping("/query03")
+	public ResponseEntity<?> cadastrarAbastecimentoBomba(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException, SQLException {
 		ObjectMapper mapper = new ObjectMapper();
-		Abastecimento abastecimento = mapper.readValue(body, Abastecimento.class);
-		absSQL.novoAbastecimento(abastecimento);
-		return ResponseEntity.ok("Novo abastecimento cadastrado com sucesso");
+		AbastecimentoBomba abastecimentoBomba = mapper.readValue(body, AbastecimentoBomba.class);
+		absBombaSQL.novoAbastecimentoBomba(abastecimentoBomba);
+		return ResponseEntity.ok("Novo abastecimento bomba cadastrado com sucesso");
 	}
+
 }
