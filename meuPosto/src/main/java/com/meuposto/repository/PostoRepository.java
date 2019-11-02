@@ -26,7 +26,7 @@ public interface PostoRepository extends JpaRepository<Posto, Integer> {
 	
 	//7)Dado um dia, listar todos os abastecimentos de um posto com nome do combustível, CPF do cliente, quantidade de litros e o preço naquele momento
 
-	@Query(value = "select c.cpf,cb.nome,a.qtd_litros,a.preco from combustivel as cb " + 
+	@Query(value = "select c.cpf,cb.nome,a.qtd_litros,a.preco from COMBUSTIVEL as cb " + 
 			"inner join BOMBA as b on cb.id = b.COMBUSTIVEL_id " + 
 			"inner join ABASTECIMENTO as a on b.id = a.BOMBA_id " + 
 			"inner join CLIENTE as c on a.CLIENTE_id = c.id " + 

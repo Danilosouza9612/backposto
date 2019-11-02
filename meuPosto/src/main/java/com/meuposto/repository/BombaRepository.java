@@ -16,7 +16,7 @@ public interface BombaRepository extends JpaRepository<Bomba, Integer> {
 
 	@Query(value = "select b.preco,b.qtd_restante,p.nome_fantasia,c.nome as nome_combustivel from POSTO as p "
 			+ "inner join BOMBA as b on p.id = b.POSTO_id " + "inner join COMBUSTIVEL as c on b.COMBUSTIVEL_id = c.id "
-			+ "WHERE b.qtd_restante < 100", nativeQuery = true)
+			+ "WHERE b.qtd_restante < 1000", nativeQuery = true)
 	public List<ProjecaoQuery08> getBombaInferior100Litros();
 	
 	/*6)Uma stored procedure para informar as bombas de combustível com nome do posto e tipo de combustível com quantidade inferior a 1000 litros
