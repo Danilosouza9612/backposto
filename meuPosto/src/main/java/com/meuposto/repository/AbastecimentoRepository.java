@@ -22,4 +22,7 @@ public interface AbastecimentoRepository extends JpaRepository<Abastecimento, In
 													@Param("bombaId") int bombaId,
 													@Param("cpf") String cpf,
 													@Param("nome") String nome);
+	//5)Uma stored procedure para novos abastecimentos(Intermitência)	
+
+	
 }
