@@ -6,13 +6,14 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
-@Table(name = "posto")
+@Table(name = "POSTO")
 public class Posto {
 
 	@Id
@@ -24,28 +25,35 @@ public class Posto {
 	@ManyToOne
 	@JoinColumn(name = "BANDEIRA_id")
 	private Bandeira bandeira;
+	@OneToOne
+	@JoinColumn(name = "GERENTE_id")
+	private Gerente gerente;
+	@OneToOne(mappedBy="posto")
+	private EnderecoPosto endereco;
 
 	@JsonCreator
-	public Posto(@JsonProperty("cnpj") String cnpj, @JsonProperty("razao_social") String razaoSocial,
-			@JsonProperty("nome_fantasia") String nomeFantasia, @JsonProperty("telefone") String telefone,
-			@JsonProperty("cep") String cep, @JsonProperty("numero") String numero,
-			@JsonProperty("complemento") String complemento, @JsonProperty("nome_gerente") String nomeGerente,
-			@JsonProperty("cpf_gerente") String cpfGerente, @JsonProperty("telefone_gerente") String telefoneGerente,
-			@JsonProperty("senha_gerente") String senhaGerente) throws IOException {
+	public Posto(@JsonProperty("cnpj") String cnpj, 
+				 @JsonProperty("razaoSocial") String razaoSocial,
+				 @JsonProperty("nomeFantasia") String nomeFantasia, 
+				 @JsonProperty("telefone") String telefone,
+				 @JsonProperty("gerenteId") int gerenteId,
+				 @JsonProperty("bandeiraId") Integer bandeiraId,
+				 @JsonProperty("cep") String cep, 
+				 @JsonProperty("numero") String numero,
+				 @JsonProperty("complemento") String complemento) throws IOException {
 
 		this.cnpj = cnpj;
 		this.razaoSocial = razaoSocial;
 		this.nomeFantasia = nomeFantasia;
 		this.telefone = telefone;
-		EnderecoPosto enderecoPosto = new EnderecoPosto();
-		enderecoPosto.setCep(cep);
-		enderecoPosto.setNumero(numero);
-		enderecoPosto.setComplemento(complemento);
-		Gerente gerente = new Gerente();
-		gerente.setNome(nomeGerente);
-		gerente.setCpf(cpfGerente);
-		gerente.setTelefone(telefoneGerente);
-		gerente.setSenha(senhaGerente);
+		this.endereco = new EnderecoPosto();
+		endereco.setCep(cep);
+		endereco.setNumero(numero);
+		endereco.setComplemento(complemento);
+		this.gerente = new Gerente();
+		gerente.setId(gerenteId);
+		this.bandeira = new Bandeira();
+		bandeira.setId(bandeiraId);
 	}
 
 	public int getId() {
@@ -96,4 +104,20 @@ public class Posto {
 		this.bandeira = bandeira;
 	}
 
+	public Gerente getGerente() {
+		return gerente;
+	}
+
+	public void setGerente(Gerente gerente) {
+		this.gerente = gerente;
+	}
+
+	public EnderecoPosto getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(EnderecoPosto endereco) {
+		this.endereco = endereco;
+	}
+	
 }

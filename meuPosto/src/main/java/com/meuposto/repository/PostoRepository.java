@@ -10,17 +10,18 @@ import org.springframework.stereotype.Repository;
 
 import com.meuposto.model.Posto;
 import com.meuposto.model.ProjecaoQuery07;
+import com.meuposto.model.ProjecaoQuery9;
 
 @Repository
 public interface PostoRepository extends JpaRepository<Posto, Integer> {
 
 	// 9)Informar o faturamento de cada posto em um mês
 
-	@Query(value = "SELECT (sum(a.preco)*sum(a.qtd_litros)) as faturamento FROM ABASTECIMENTO as a "
-			+ "INNER JOIN BOMBA as b " + "ON b.id = a.BOMBA_id " + "INNER JOIN POSTO as p "
-			+ "WHERE b.POSTO_id = :id_param AND MONTH(a.data) = :mes_param AND YEAR(a.data) = :ano_param "
+	@Query(value = "SELECT ANY_VALUE(p.nome_fantasia) as nomeFantasia, SUM(a.preco*a.qtd_litros) as faturamento FROM ABASTECIMENTO as a "
+			+ "INNER JOIN BOMBA as b " + "ON b.id = a.BOMBA_id " + "INNER JOIN POSTO as p ON p.id = b.POSTO_id "
+			+ "WHERE MONTH(a.data) = :mes_param AND YEAR(a.data) = :ano_param "
 			+ "GROUP BY b.POSTO_id", nativeQuery = true)
-	public List<Double> getFaturamento(@Param("id_param") int id, @Param("mes_param") int mes,
+	public List<ProjecaoQuery9> getFaturamento(@Param("mes_param") int mes,
 			@Param("ano_param") int ano);
 
 	// 7)Dado um dia, listar todos os abastecimentos de um posto com nome do

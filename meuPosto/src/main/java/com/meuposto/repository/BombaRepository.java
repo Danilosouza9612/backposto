@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.meuposto.model.Bomba;
+import com.meuposto.model.ProjecaoBomba;
 import com.meuposto.model.ProjecaoQuery08;
 
 @Repository
@@ -32,5 +33,6 @@ public interface BombaRepository extends JpaRepository<Bomba, Integer> {
 
 	@Query(value = "call Verificar_Bombas_Combustivel(:id_param)", nativeQuery = true)
 	public int getBombaInferior1000Litros(@Param("id_param") int id);
-
+	@Query(value = "SELECT b.id, c.nome FROM BOMBA as b INNER JOIN COMBUSTIVEL as c WHERE b.POSTO_id = :id_param ;", nativeQuery = true)
+	public List<ProjecaoBomba> getBombas(@Param("id_param") int id);
 }

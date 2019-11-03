@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.meuposto.model.Bomba;
+import com.meuposto.model.ProjecaoBomba;
 import com.meuposto.model.ProjecaoQuery08;
 import com.meuposto.repository.BombaRepository;
 
@@ -34,6 +35,11 @@ public class BombaController {
 	@GetMapping("/query06")
 	public int getBombaInferior1000Litros(@RequestParam int id) {
 		return bombaRepository.getBombaInferior1000Litros(id);
+	}
+	
+	@GetMapping("/bombas")
+	public List<ProjecaoBomba> getBombas(@RequestParam int id){
+		return bombaRepository.getBombas(id);
 	}
 
 }

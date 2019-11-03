@@ -9,7 +9,7 @@ public class ConexaoSQL {
 
 	public ConexaoSQL() throws SQLException {
 		DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/meuPosto", "root", "");
+		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/posto", "root", "123456");
 	}
 
 	public Connection getConnection() {

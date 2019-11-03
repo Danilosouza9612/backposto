@@ -11,7 +11,7 @@ public class AbastecimentoBombaSQL {
 
 	public void novoAbastecimentoBomba(AbastecimentoBomba abastecimentoBomba) throws SQLException {
 		Connection connection = new ConexaoSQL().getConnection();
-		String sql = "insert into abastecimento_bomba values (?,?,?,?,?,?)";
+		String sql = "insert into ABASTECIMENTO_BOMBA values (?,?,?,?,?,?)";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setInt(1,abastecimentoBomba.getId());
 		statement.setDate(2, new Date(abastecimentoBomba.getData().getTime()));

@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meuposto.model.Posto;
 import com.meuposto.model.ProjecaoQuery07;
+import com.meuposto.model.ProjecaoQuery9;
 import com.meuposto.repository.PostoRepository;
 import com.meuposto.repository.PostoSQL;
 
@@ -43,8 +44,8 @@ public class PostoController {
 	}
 
 	@GetMapping("/query09")
-	public List<Double> getQtdAbastecimento(@RequestParam int id, @RequestParam int mes, @RequestParam int ano) {
-		return postoRepository.getFaturamento(id, mes, ano);
+	public List<ProjecaoQuery9> getQtdAbastecimento(@RequestParam int mes, @RequestParam int ano) {
+		return postoRepository.getFaturamento(mes, ano);
 	}
 
 	@GetMapping("/query07")

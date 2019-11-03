@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.meuposto.controller.DateDeserialize;
 
 @Entity
-@Table(name = "abastecimento")
+@Table(name = "ABASTECIMENTO")
 public class Abastecimento {
 
 	@Id
