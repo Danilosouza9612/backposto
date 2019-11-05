@@ -33,6 +33,6 @@ public interface BombaRepository extends JpaRepository<Bomba, Integer> {
 
 	@Query(value = "call Verificar_Bombas_Combustivel(:id_param)", nativeQuery = true)
 	public int getBombaInferior1000Litros(@Param("id_param") int id);
-	@Query(value = "SELECT b.id, c.nome FROM BOMBA as b INNER JOIN COMBUSTIVEL as c WHERE b.POSTO_id = :id_param ;", nativeQuery = true)
+	@Query(value = "SELECT b.id, c.nome FROM BOMBA as b INNER JOIN COMBUSTIVEL as c ON b.COMBUSTIVEL_id = c.id WHERE b.POSTO_id = :id_param ;", nativeQuery = true)
 	public List<ProjecaoBomba> getBombas(@Param("id_param") int id);
 }

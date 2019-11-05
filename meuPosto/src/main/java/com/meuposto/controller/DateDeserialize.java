@@ -8,7 +8,17 @@ import java.sql.Date;
 public class DateDeserialize {
 
 	public static Date deserialize(String data) throws IOException {
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		try {
+			return new Date(format.parse(data).getTime());
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public static Date deserializeWithoutTime(String data) throws IOException {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			return new Date(format.parse(data).getTime());
 		} catch (ParseException e) {

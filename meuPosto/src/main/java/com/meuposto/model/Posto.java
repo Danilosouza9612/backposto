@@ -36,7 +36,7 @@ public class Posto {
 				 @JsonProperty("razaoSocial") String razaoSocial,
 				 @JsonProperty("nomeFantasia") String nomeFantasia, 
 				 @JsonProperty("telefone") String telefone,
-				 @JsonProperty("gerenteId") int gerenteId,
+				 @JsonProperty("gerenteCpf") String gerenteCpf,
 				 @JsonProperty("bandeiraId") Integer bandeiraId,
 				 @JsonProperty("cep") String cep, 
 				 @JsonProperty("numero") String numero,
@@ -51,9 +51,11 @@ public class Posto {
 		endereco.setNumero(numero);
 		endereco.setComplemento(complemento);
 		this.gerente = new Gerente();
-		gerente.setId(gerenteId);
-		this.bandeira = new Bandeira();
-		bandeira.setId(bandeiraId);
+		gerente.setCpf(gerenteCpf);
+		if(bandeiraId!=null) {
+			this.bandeira = new Bandeira();
+			bandeira.setId(bandeiraId);
+		}
 	}
 
 	public int getId() {

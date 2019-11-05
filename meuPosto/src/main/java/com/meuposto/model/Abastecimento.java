@@ -30,10 +30,14 @@ public class Abastecimento {
 	private Bomba bomba;
 
 	@JsonCreator
-	public Abastecimento(@JsonProperty("data") String data, @JsonProperty("qtdLitros") float litros,
-			@JsonProperty("bombaId") int bombaId, @JsonProperty("cpf") String cpf, @JsonProperty("nome") String nome)
+	public Abastecimento(@JsonProperty("data") String data, 
+						 @JsonProperty("hora") String hora,
+						 @JsonProperty("qtdLitros") float litros,
+						 @JsonProperty("bombaId") int bombaId, 
+						 @JsonProperty("cpf") String cpf, 
+						 @JsonProperty("nome") String nome)
 			throws IOException {
-		this.data = DateDeserialize.deserialize(data);
+		this.data = DateDeserialize.deserialize(data + " "+hora);
 		this.qtdLitros = litros;
 		this.bomba = new Bomba();
 		this.cliente = new Cliente();

@@ -30,15 +30,16 @@ public class AbastecimentoBomba {
 	private float preco;
 
 	@JsonCreator
-	public AbastecimentoBomba(@JsonProperty("id") int id, @JsonProperty("bandeiraId") int bandeiraId, @JsonProperty("bombaId") int bombaId,
-			@JsonProperty("data") String data, @JsonProperty("qtdLitros") float qtdLitros,
-			@JsonProperty("preco") float preco) throws IOException {
-		this.id = id;
+	public AbastecimentoBomba(@JsonProperty("bandeiraId") int bandeiraId, 
+							  @JsonProperty("bombaId") int bombaId,
+							  @JsonProperty("data") String data, 
+							  @JsonProperty("qtdLitros") float qtdLitros,
+							  @JsonProperty("preco") float preco) throws IOException {
 		this.bandeira = new Bandeira();
 		this.bandeira.setId(bandeiraId);
 		this.bomba = new Bomba();
 		this.bomba.setId(bombaId);
-		this.data = DateDeserialize.deserialize(data);
+		this.data = DateDeserialize.deserializeWithoutTime(data);
 		this.qtdLitros = qtdLitros;
 		this.preco = preco;
 	}
