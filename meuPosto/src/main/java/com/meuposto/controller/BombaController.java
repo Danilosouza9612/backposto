@@ -28,8 +28,8 @@ public class BombaController {
 	}
 
 	@GetMapping("/query08")
-	public List<ProjecaoQuery08> getBombaInferior100Litros() {
-		return bombaRepository.getBombaInferior100Litros();
+	public List<ProjecaoQuery08> getBombaInferior100Litros(@RequestParam int id) {
+		return bombaRepository.getBombaInferior100Litros(id);
 	}
 
 	@GetMapping("/query06")
