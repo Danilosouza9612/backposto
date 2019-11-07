@@ -27,8 +27,10 @@ public class CombustivelController {
 	}
 
 	@GetMapping("/query10")
-	public List<ProjecaoQuery10> getQtdAbastecimento(@RequestParam int id) {
-		return combustivelRepository.getQtdAbastecimento(id);
+	public List<ProjecaoQuery10> getQtdAbastecimento(@RequestParam int id,
+													 @RequestParam int mes,
+													 @RequestParam int ano) {
+		return combustivelRepository.getQtdAbastecimento(id, mes, ano);
 	}
 
 }
