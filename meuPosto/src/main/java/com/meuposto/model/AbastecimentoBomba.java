@@ -89,7 +89,10 @@ public class AbastecimentoBomba {
 	}
 
 	public void setPreco(float preco) {
-		this.preco = preco;
+		if(preco>0)
+			this.preco = preco;
+		else
+			throw new IllegalArgumentException("Preço Inválido");
 	}
 
 }

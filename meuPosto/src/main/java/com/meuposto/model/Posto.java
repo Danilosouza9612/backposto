@@ -71,7 +71,11 @@ public class Posto {
 	}
 
 	public void setCnpj(String cnpj) {
-		this.cnpj = cnpj;
+		if(cnpj.matches("[0-9]{14}")) {
+			this.cnpj = cnpj;
+		}else {
+			throw new IllegalArgumentException("CNPJ Inválido");
+		}
 	}
 
 	public String getRazaoSocial() {

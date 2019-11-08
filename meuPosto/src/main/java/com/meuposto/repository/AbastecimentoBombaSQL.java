@@ -16,8 +16,8 @@ public class AbastecimentoBombaSQL {
 		PreparedStatement statement = connection.prepareStatement(sql);
 		statement.setInt(1, abastecimentoBomba.getBomba().getId());
 		statement.setDate(2, new Date(abastecimentoBomba.getData().getTime()));
-		statement.setFloat(3, abastecimentoBomba.getPreco());
-		statement.setFloat(4, abastecimentoBomba.getQtdLitros());
+		statement.setFloat(3, abastecimentoBomba.getQtdLitros());
+		statement.setFloat(4, abastecimentoBomba.getPreco());
 		statement.setInt(5, abastecimentoBomba.getBandeira().getId());
 		statement.execute();
 		statement.close();

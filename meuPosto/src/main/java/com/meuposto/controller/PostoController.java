@@ -61,5 +61,4 @@ public class PostoController {
 		postoSQL.novoPosto(posto);
 		return ResponseEntity.ok("Novo posto cadastrado com sucesso");
 	}
-
 }

@@ -23,47 +23,44 @@ public class Gerente {
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	public String getNome() {
 		return nome;
 	}
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
 	public String getCpf() {
 		return cpf;
 	}
-
 	public void setCpf(String cpf) {
-		this.cpf = cpf;
+		if(cpf.matches("[0-9]{11}")) {
+			throw new IllegalArgumentException("CPF Inválido");
+		}
 	}
-
 	public String getTelefone() {
 		return telefone;
 	}
-
 	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+		if(telefone.matches("[0-9]{11}")) {
+			this.telefone = telefone;
+		}else {
+			throw new IllegalArgumentException("Telefone Inválido");
+		}
 	}
-
 	public String getSenha() {
 		return senha;
 	}
-
 	public void setSenha(String senha) {
-		this.senha = senha;
+		if(senha.length()<6) {
+			this.senha = senha;
+		}
 	}
-
 	public Posto getPosto() {
 		return posto;
 	}
-
 	public void setPosto(Posto posto) {
 		this.posto = posto;
 	}

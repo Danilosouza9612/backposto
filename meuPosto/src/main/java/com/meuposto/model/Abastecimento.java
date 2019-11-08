@@ -67,7 +67,11 @@ public class Abastecimento {
 	}
 
 	public void setPreco(float preco) {
-		this.preco = preco;
+		if(preco>0) {
+			this.preco = preco;
+		}else {
+			throw new IllegalArgumentException("Preço Inválido");
+		}
 	}
 
 	public float getQtdLitros() {
@@ -75,7 +79,10 @@ public class Abastecimento {
 	}
 
 	public void setQtdLitros(float qtdLitros) {
-		this.qtdLitros = qtdLitros;
+		if(qtdLitros>0)
+			this.qtdLitros = qtdLitros;
+		else
+			throw new IllegalArgumentException("Quantidade de litros inválida");
 	}
 
 	public Cliente getCliente() {
