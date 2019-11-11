@@ -34,11 +34,7 @@ public class Cliente {
 	}
 
 	public void setCpf(String cpf) {
-		if(cpf.matches("[0-9]{11}")) {
-			this.cpf = cpf;
-		}else {
-			throw new IllegalArgumentException("CPF Inválido");
-		}
+		this.cpf = cpf;
 	}
 
 }

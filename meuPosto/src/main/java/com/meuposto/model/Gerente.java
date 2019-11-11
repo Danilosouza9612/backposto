@@ -36,27 +36,19 @@ public class Gerente {
 		return cpf;
 	}
 	public void setCpf(String cpf) {
-		if(cpf.matches("[0-9]{11}")) {
-			throw new IllegalArgumentException("CPF Inválido");
-		}
+		this.cpf=cpf;
 	}
 	public String getTelefone() {
 		return telefone;
 	}
 	public void setTelefone(String telefone) {
-		if(telefone.matches("[0-9]{11}")) {
-			this.telefone = telefone;
-		}else {
-			throw new IllegalArgumentException("Telefone Inválido");
-		}
+		this.telefone = telefone;
 	}
 	public String getSenha() {
 		return senha;
 	}
 	public void setSenha(String senha) {
-		if(senha.length()<6) {
-			this.senha = senha;
-		}
+		this.senha = senha;
 	}
 	public Posto getPosto() {
 		return posto;
@@ -64,5 +56,4 @@ public class Gerente {
 	public void setPosto(Posto posto) {
 		this.posto = posto;
 	}
-
 }

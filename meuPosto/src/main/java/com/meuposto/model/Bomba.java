@@ -50,11 +50,7 @@ public class Bomba {
 	}
 
 	public void setPreco(float preco) {
-		if(preco>0) {
-			this.preco = preco;
-		}else {
-			throw new IllegalArgumentException("Preço Inválido");
-		}
+		this.preco = preco;
 	}
 
 	public float getQtdRestante() {
@@ -62,10 +58,7 @@ public class Bomba {
 	}
 
 	public void setQtdRestante(float qtdRestante) {
-		if(qtdRestante>0)
-			this.qtdRestante = qtdRestante;
-		else
-			throw new IllegalArgumentException("Quantidade de litros inválida");
+		this.qtdRestante = qtdRestante;
 	}
 
 }
