@@ -4,4 +4,5 @@ public interface ProjecaoQuery08 {
 	float getPreco();
 	float getQtdRestante();
 	String getNome();
+	int getId();
 }

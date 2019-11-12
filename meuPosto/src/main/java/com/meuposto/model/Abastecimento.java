@@ -2,6 +2,7 @@ package com.meuposto.model;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,7 +20,7 @@ public class Abastecimento {
 
 	@Id
 	private int id;
-	private Date data;
+	private Timestamp data;
 	private float preco;
 	private float qtdLitros;
 	@ManyToOne
@@ -54,11 +55,11 @@ public class Abastecimento {
 		this.id = id;
 	}
 
-	public Date getData() {
+	public Timestamp getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(Timestamp data) {
 		this.data = data;
 	}
 

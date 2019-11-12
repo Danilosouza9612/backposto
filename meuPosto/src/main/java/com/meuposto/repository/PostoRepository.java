@@ -17,7 +17,7 @@ public interface PostoRepository extends JpaRepository<Posto, Integer> {
 
 	// 9)Informar o faturamento de cada posto em um mês
 
-	@Query(value = "SELECT ANY_VALUE(p.nome_fantasia) as nomeFantasia, IF(ANY_VALUE(a.id) IS NULL, 0 ,SUM(a.preco*a.qtd_litros)) as faturamento " + 
+	@Query(value = "SELECT ANY_VALUE(p.nome_fantasia) as nomeFantasia, IF(ANY_VALUE(a.id) IS NULL, 0 ,SUM(a.preco*a.qtd_litros)) as faturamento, ANY_VALUE(p.telefone) " + 
 			"FROM (SELECT * FROM ABASTECIMENTO WHERE MONTH(data) = :mes_param AND YEAR(data) = :ano_param ) as a " + 
 			"RIGHT JOIN BOMBA as b ON b.id = a.BOMBA_id " + 
 			"RIGHT JOIN POSTO as p ON p.id = b.POSTO_id " + 
@@ -28,7 +28,7 @@ public interface PostoRepository extends JpaRepository<Posto, Integer> {
 	// 7)Dado um dia, listar todos os abastecimentos de um posto com nome do
 	// combustível, CPF do cliente, quantidade de litros e o preço naquele momento
 
-	@Query(value = "select c.cpf,cb.nome,a.qtd_litros,a.preco from COMBUSTIVEL as cb "
+	@Query(value = "select TIME(a.data), c.nome as nome_cliente, c.cpf,cb.nome,a.qtd_litros,a.preco from COMBUSTIVEL as cb "
 			+ "inner join BOMBA as b on cb.id = b.COMBUSTIVEL_id "
 			+ "inner join ABASTECIMENTO as a on b.id = a.BOMBA_id " + "inner join CLIENTE as c on a.CLIENTE_id = c.id "
 			+ "where DATE(a.data) = :data_param and b.POSTO_ID = :id_param", nativeQuery = true)
