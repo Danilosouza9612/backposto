@@ -1,7 +1,10 @@
 package com.meuposto.model;
 
+import java.util.Date;
+
 public interface ProjecaoQuery07 {
-	String getHora();
+	int getIdPosto();
+	Date getData();
 	String getNomeCliente();
 	String getCpf();
 	String getNome();

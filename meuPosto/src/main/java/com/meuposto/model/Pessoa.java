@@ -2,12 +2,14 @@ package com.meuposto.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CLIENTE")
-public class Cliente {
-
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)@Table(name = "CLIENTE")
+public class Pessoa {
+	
 	@Id
 	private int id;
 	private String nome;

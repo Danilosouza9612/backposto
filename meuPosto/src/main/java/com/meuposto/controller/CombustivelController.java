@@ -30,7 +30,8 @@ public class CombustivelController {
 	public List<ProjecaoQuery10> getQtdAbastecimento(@RequestParam int id,
 													 @RequestParam int mes,
 													 @RequestParam int ano) {
-		return combustivelRepository.getQtdAbastecimento(id, mes, ano);
+		List<ProjecaoQuery10> list = combustivelRepository.getQtdAbastecimento(id, mes, ano);
+		return list;
 	}
 
 }

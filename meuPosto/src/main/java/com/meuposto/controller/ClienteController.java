@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.meuposto.model.Cliente;
+import com.meuposto.model.Pessoa;
 import com.meuposto.model.ProjecaoQuery11;
 import com.meuposto.repository.ClienteRepository;
 
@@ -21,7 +21,7 @@ public class ClienteController {
 	ClienteRepository clienteRepository;
 
 	@GetMapping("/listar")
-	public List<Cliente> listarClientes() {
+	public List<Pessoa> listarClientes() {
 		return clienteRepository.findAll();
 	}
 

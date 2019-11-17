@@ -25,7 +25,7 @@ public class Abastecimento {
 	private float qtdLitros;
 	@ManyToOne
 	@JoinColumn(name = "CLIENTE_id")
-	private Cliente cliente;
+	private Pessoa cliente;
 	@ManyToOne
 	@JoinColumn(name = "BOMBA_id")
 	private Bomba bomba;
@@ -41,7 +41,7 @@ public class Abastecimento {
 		this.data = DateDeserialize.deserialize(data + " "+hora);
 		this.qtdLitros = litros;
 		this.bomba = new Bomba();
-		this.cliente = new Cliente();
+		this.cliente = new Pessoa();
 		this.bomba.setId(bombaId);
 		this.cliente.setCpf(cpf);
 		this.cliente.setNome(nome);
@@ -79,11 +79,11 @@ public class Abastecimento {
 		this.qtdLitros = qtdLitros;
 	}
 
-	public Cliente getCliente() {
+	public Pessoa getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(Cliente cliente) {
+	public void setCliente(Pessoa cliente) {
 		this.cliente = cliente;
 	}
 

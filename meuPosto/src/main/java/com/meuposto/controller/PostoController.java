@@ -16,13 +16,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meuposto.model.Posto;
 import com.meuposto.model.ProjecaoQuery07;
 import com.meuposto.model.ProjecaoQuery9;
+import com.meuposto.repository.AbastecimentoNoSQL;
 import com.meuposto.repository.PostoRepository;
 import com.meuposto.repository.PostoSQL;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 
 @RestController
 @CrossOrigin
@@ -30,14 +34,15 @@ import com.meuposto.repository.PostoSQL;
 public class PostoController {
 
 	private PostoSQL postoSQL;
-
-	public PostoController() {
-		this.postoSQL = new PostoSQL();
-	}
-
+	private AbastecimentoNoSQL noSQL;
 	@Autowired
 	PostoRepository postoRepository;
 
+	public PostoController() {
+		this.postoSQL = new PostoSQL();
+		this.noSQL = new AbastecimentoNoSQL();
+	}
+	
 	@GetMapping("/listar")
 	public List<Posto> listarPostos() {
 		return postoRepository.findAll();
@@ -47,12 +52,6 @@ public class PostoController {
 	public List<ProjecaoQuery9> getQtdAbastecimento(@RequestParam int mes, @RequestParam int ano) {
 		return postoRepository.getFaturamento(mes, ano);
 	}
-
-	@GetMapping("/query07")
-	public List<ProjecaoQuery07> getAbastecimentosPosto(@RequestParam Date data, @RequestParam int id) {
-		return postoRepository.getAbastecimentosPosto(data, id);
-	}
-
 	@PostMapping("/query12")
 	public ResponseEntity<?> cadastrarPosto(@RequestBody String body)
 			throws JsonParseException, JsonMappingException, IOException, SQLException {

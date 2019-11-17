@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.meuposto.model.Gerente;
 import com.meuposto.model.ProjecaoGerente;
 import com.meuposto.repository.GerenteRepository;
 
@@ -19,7 +20,7 @@ public class GerenteController {
 	GerenteRepository gerenteRepository;
 	
 	@GetMapping("/gerentes")
-	public List<ProjecaoGerente> getGerentes(){
-		return gerenteRepository.getGerentes();
+	public List<Gerente> getGerentes(){
+		return gerenteRepository.findAll();
 	}
 }
