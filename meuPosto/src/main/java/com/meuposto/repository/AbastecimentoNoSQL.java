@@ -33,7 +33,8 @@ public class AbastecimentoNoSQL implements Observer{
 			List<ProjecaoQuery07> list = abastecimentoRepository.getAbastecimentosPosto();
 			noSQL.insertList(list);
 		}
-		dataMil = data.getTime();
+		System.out.println(data.toString());
+		dataMil = data.getTime() - 10800000;
 		dataMil2 = dataMil + 86340000;
 		System.out.println(dataMil);
 		System.out.println(dataMil2);
