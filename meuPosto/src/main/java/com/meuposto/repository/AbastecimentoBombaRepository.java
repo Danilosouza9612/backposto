@@ -16,6 +16,6 @@ public interface AbastecimentoBombaRepository extends JpaRepository<Abasteciment
 			"INNER JOIN bomba as b ON ab.BOMBA_id = b.id " + 
 			"INNER JOIN combustivel as c ON c.id = b.COMBUSTIVEL_id " + 
 			"INNER JOIN bandeira as ban ON ban.id = ab.BANDEIRA_id " + 
-			"WHERE b.POSTO_id = :id AND MONTH(ab.data) = :mes AND YEAR(ab.data) = :ano ", nativeQuery=true)
+			"WHERE b.POSTO_id = :id AND MONTH(ab.data) = :mes AND YEAR(ab.data) = :ano ORDER BY data ASC", nativeQuery=true)
 	public List<ProjecaoAbastecimentoBomba> getAbastecimentosBomba(@Param("id") int id, @Param("mes") int mes, @Param("ano") int ano);
 }
