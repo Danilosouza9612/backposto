@@ -4,7 +4,7 @@ import java.util.Date;
 
 public interface ProjecaoQuery07 {
 	int getIdPosto();
-	String getData();
+	Date getData();
 	String getNomeCliente();
 	String getCpf();
 	String getNome();

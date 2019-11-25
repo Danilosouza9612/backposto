@@ -1,5 +1,6 @@
 package com.meuposto.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Map;
@@ -9,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties("_id")
-public class NoSQLQuery7 implements ProjecaoQuery07{
+public class NoSQLQuery7{
 	
 	private int idPosto;
 	private Date data;
@@ -28,7 +29,7 @@ public class NoSQLQuery7 implements ProjecaoQuery07{
 					   @JsonProperty("qtdLitros") float qtdLitros,
 					   @JsonProperty("preco") float preco) {
 		this.data= Calendar.getInstance().getTime();
-		this.data.setTime(data.get("$numberLong"));
+		this.data.setTime(data.get("$numberLong")+10800000);
 		this.nomeCliente=nomeCliente;
 		this.cpf=cpf;
 		this.nome=nome;
@@ -41,9 +42,10 @@ public class NoSQLQuery7 implements ProjecaoQuery07{
 		return idPosto;
 	}
 	
-	public Date getData() {
+	public String getData() {
 		// TODO Auto-generated method stub
-		return data;
+		SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+		return format.format(data);
 	}
 
 	public String getNomeCliente() {

@@ -40,7 +40,7 @@ public class AbastecimentoBombaController {
 			throws JsonParseException, JsonMappingException, IOException, SQLException {
 		ObjectMapper mapper = new ObjectMapper();
 		AbastecimentoBomba abastecimentoBomba = mapper.readValue(body, AbastecimentoBomba.class);
-		absBombaSQL.novoAbastecimentoBomba(abastecimentoBomba);
+		context.saveAndFlush(abastecimentoBomba);
 		return ResponseEntity.ok("Novo abastecimento bomba cadastrado com sucesso");
 	}
 	@GetMapping("/query13")

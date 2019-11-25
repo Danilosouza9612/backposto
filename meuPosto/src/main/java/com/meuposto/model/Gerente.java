@@ -12,7 +12,6 @@ public class Gerente extends Pessoa{
 
 	private String telefone;
 	private String senha;
-	@OneToOne
 	
 	public String getTelefone() {
 		return telefone;

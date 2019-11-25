@@ -1,20 +1,15 @@
 package com.meuposto.repository;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.catalina.mapper.Mapper;
 import org.bson.Document;
 import org.bson.conversions.Bson;
-
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meuposto.model.NoSQLQuery7;
-import com.meuposto.model.ProjecaoQuery07;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 import com.mongodb.client.MongoCollection;
@@ -42,8 +37,8 @@ public class ConexaoNoSQL {
 			e.printStackTrace();
 		}
 	}
-	public List<ProjecaoQuery07> toFind(Bson query) {
-		List<ProjecaoQuery07> list = new ArrayList<ProjecaoQuery07>();
+	public List<NoSQLQuery7> toFind(Bson query) {
+		List<NoSQLQuery7> list = new ArrayList<NoSQLQuery7>();
 		MongoCursor<Document> documents =  collection.find(query).iterator();
 		ObjectMapper mapper = new ObjectMapper();
 		documents.forEachRemaining(document->{

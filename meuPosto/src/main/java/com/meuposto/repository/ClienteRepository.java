@@ -14,7 +14,7 @@ public interface ClienteRepository extends JpaRepository<Pessoa, Integer> {
 
 	// 11)Informar nome e CPF de clientes que foram no posto duas vezes ou mais
 
-	@Query(value = "select c.id c.nome, c.cpf, COUNT(c.id) from CLIENTE as c " 
+	@Query(value = "select c.id, c.nome, c.cpf, COUNT(c.id) from CLIENTE as c " 
 			+ "INNER JOIN ABASTECIMENTO as a "
 			+ "ON a.CLIENTE_id = c.id " 
 			+ "GROUP BY c.id " 
