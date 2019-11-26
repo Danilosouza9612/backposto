@@ -5,20 +5,22 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.meuposto.model.AbastecimentoBomba;
-import com.meuposto.model.ProjecaoAbastecimentoBomba;
 import com.meuposto.repository.AbastecimentoBombaRepository;
 import com.meuposto.repository.AbastecimentoBombaSQL;
 
@@ -43,11 +45,14 @@ public class AbastecimentoBombaController {
 		context.saveAndFlush(abastecimentoBomba);
 		return ResponseEntity.ok("Novo abastecimento bomba cadastrado com sucesso");
 	}
-	@GetMapping("/query13")
-	public List<ProjecaoAbastecimentoBomba> getAbastecimentosBomba(@RequestParam("id") int id,
+	@RequestMapping(value = "/query13", 
+					method=RequestMethod.GET,  
+					produces = { MediaType.APPLICATION_JSON_VALUE })
+	public String getAbastecimentosBomba(@RequestParam("id") int id,
 																   @RequestParam("mes") int mes,
-																   @RequestParam("ano") int ano){
-		return this.context.getAbastecimentosBomba(id, mes, ano);
+																   @RequestParam("ano") int ano) throws JsonProcessingException{
+		ObjectMapper mapper = new ObjectMapper();
+		return mapper.writeValueAsString(this.context.getAbastecimentosBomba(id, mes, ano));
 	}
 
 }

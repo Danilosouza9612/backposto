@@ -12,10 +12,13 @@ import com.meuposto.model.ProjecaoAbastecimentoBomba;
 
 @Repository
 public interface AbastecimentoBombaRepository extends JpaRepository<AbastecimentoBomba, Integer> {
-	@Query(value = "SELECT DATE(ab.data), ab.qtd_litros, c.nome as c_nome, ban.nome as ban_nome, ab.preco FROM abastecimento_bomba as ab " + 
-			"INNER JOIN bomba as b ON ab.BOMBA_id = b.id " + 
-			"INNER JOIN combustivel as c ON c.id = b.COMBUSTIVEL_id " + 
-			"INNER JOIN bandeira as ban ON ban.id = ab.BANDEIRA_id " + 
-			"WHERE b.POSTO_id = :id AND MONTH(ab.data) = :mes AND YEAR(ab.data) = :ano ORDER BY data ASC", nativeQuery=true)
-	public List<ProjecaoAbastecimentoBomba> getAbastecimentosBomba(@Param("id") int id, @Param("mes") int mes, @Param("ano") int ano);
+	@Query(value = "SELECT "
+			+ "a "
+			+ "FROM AbastecimentoBomba a " + 
+			"INNER JOIN a.bomba b" + 
+			"INNER JOIN a.bandeira " + 
+			"INNER JOIN a.bomba.posto " +
+			"INNER JOIN a.bomba.combustivel " + 
+			"WHERE a.bomba.posto.id = :id AND MONTH(a.data) = :mes AND YEAR(a.data) = :ano ORDER BY data ASC")
+	public List<AbastecimentoBomba> getAbastecimentosBomba(@Param("id") int id, @Param("mes") int mes, @Param("ano") int ano);
 }

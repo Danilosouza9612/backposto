@@ -10,6 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
@@ -31,6 +32,7 @@ public class Posto {
 	@OneToOne(mappedBy="posto")
 	private EnderecoPosto endereco;
 
+	public Posto() {}
 	@JsonCreator
 	public Posto(@JsonProperty("cnpj") String cnpj, 
 				 @JsonProperty("razaoSocial") String razaoSocial,

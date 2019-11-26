@@ -12,6 +12,10 @@ public class Bandeira {
 	private int id;
 	private String nome;
 	private String url;
+	
+	public Bandeira() {
+		
+	}
 
 	public int getId() {
 		return id;
