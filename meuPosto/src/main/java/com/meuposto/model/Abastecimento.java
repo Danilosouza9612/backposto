@@ -29,7 +29,7 @@ public class Abastecimento extends AbastecimentoAbstrato {
 			throws IOException {
 		super(DateDeserialize.deserialize(data + " "+hora), 0, litros, new Bomba());
 		this.getBomba().setId(bombaId);
-		if(cpf!=null) {
+		if(cpf!=null && !cpf.trim().isEmpty()) {
 			this.cliente = new Pessoa();
 			this.cliente.setCpf(cpf);
 			this.cliente.setNome(nome);
