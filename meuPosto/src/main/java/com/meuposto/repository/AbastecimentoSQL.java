@@ -13,11 +13,18 @@ public class AbastecimentoSQL {
 		Connection connection = new ConexaoSQL().getConnection();
 		String sql = "CALL novo_abastecimento(?,?,?,?,?)";
 		PreparedStatement statement = connection.prepareStatement(sql);
+		
 		statement.setTimestamp(1, new Timestamp(abastecimento.getData().getTime()));
 		statement.setFloat(2, abastecimento.getQtdLitros());
 		statement.setInt(3, abastecimento.getBomba().getId());
-		statement.setString(4, abastecimento.getCliente().getCpf());
-		statement.setString(5, abastecimento.getCliente().getNome());
+		
+		if(abastecimento.getCliente()==null) {
+			statement.setString(4, null);
+			statement.setString(5, null);
+		}else {
+			statement.setString(4, abastecimento.getCliente().getCpf());
+			statement.setString(5, abastecimento.getCliente().getNome());
+		}
 		statement.execute();
 		statement.close();
 		connection.close();

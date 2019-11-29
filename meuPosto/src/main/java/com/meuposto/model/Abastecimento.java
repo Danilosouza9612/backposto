@@ -28,10 +28,12 @@ public class Abastecimento extends AbastecimentoAbstrato {
 						 @JsonProperty("nome") String nome)
 			throws IOException {
 		super(DateDeserialize.deserialize(data + " "+hora), 0, litros, new Bomba());
-		this.cliente = new Pessoa();
 		this.getBomba().setId(bombaId);
-		this.cliente.setCpf(cpf);
-		this.cliente.setNome(nome);
+		if(cpf!=null) {
+			this.cliente = new Pessoa();
+			this.cliente.setCpf(cpf);
+			this.cliente.setNome(nome);
+		}
 	}
 	public Pessoa getCliente() {
 		return cliente;

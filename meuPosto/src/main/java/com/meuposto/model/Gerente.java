@@ -3,6 +3,7 @@ package com.meuposto.model;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -12,6 +13,9 @@ public class Gerente extends Pessoa{
 
 	private String telefone;
 	private String senha;
+	@ManyToOne
+	@JoinColumn(name = "POSTO_id")
+	private Posto posto;
 	
 	public String getTelefone() {
 		return telefone;

@@ -26,9 +26,6 @@ public class Posto {
 	@ManyToOne
 	@JoinColumn(name = "BANDEIRA_id")
 	private Bandeira bandeira;
-	@OneToOne
-	@JoinColumn(name = "GERENTE_id")
-	private Gerente gerente;
 	@OneToOne(mappedBy="posto")
 	private EnderecoPosto endereco;
 
@@ -38,7 +35,6 @@ public class Posto {
 				 @JsonProperty("razaoSocial") String razaoSocial,
 				 @JsonProperty("nomeFantasia") String nomeFantasia, 
 				 @JsonProperty("telefone") String telefone,
-				 @JsonProperty("gerenteCpf") String gerenteCpf,
 				 @JsonProperty("bandeiraId") Integer bandeiraId,
 				 @JsonProperty("cep") String cep, 
 				 @JsonProperty("numero") String numero,
@@ -52,8 +48,6 @@ public class Posto {
 		endereco.setCep(cep);
 		endereco.setNumero(numero);
 		endereco.setComplemento(complemento);
-		this.gerente = new Gerente();
-		gerente.setCpf(gerenteCpf);
 		if(bandeiraId!=null) {
 			this.bandeira = new Bandeira();
 			bandeira.setId(bandeiraId);
@@ -107,15 +101,6 @@ public class Posto {
 	public void setBandeira(Bandeira bandeira) {
 		this.bandeira = bandeira;
 	}
-
-	public Gerente getGerente() {
-		return gerente;
-	}
-
-	public void setGerente(Gerente gerente) {
-		this.gerente = gerente;
-	}
-
 	public EnderecoPosto getEndereco() {
 		return endereco;
 	}
