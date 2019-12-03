@@ -28,18 +28,18 @@ public class BombaController {
 	}
 
 	@GetMapping("/query08")
-	public List<ProjecaoQuery08> getBombaInferior100Litros(@RequestParam int id) {
-		return bombaRepository.getBombaInferior100Litros(id);
+	public List<ProjecaoQuery08> getBombaInferior100Litros(@RequestParam String token) {
+		return bombaRepository.getBombaInferior100Litros(AuthControl.getInstance().getPostoId(token));
 	}
 
 	@GetMapping("/query06")
-	public int getBombaInferior1000Litros(@RequestParam int id) {
-		return bombaRepository.getBombaInferior1000Litros(id);
+	public int getBombaInferior1000Litros(@RequestParam String token) {
+		return bombaRepository.getBombaInferior1000Litros(AuthControl.getInstance().getPostoId(token));
 	}
 	
 	@GetMapping("/bombas")
-	public List<ProjecaoBomba> getBombas(@RequestParam int id){
-		return bombaRepository.getBombas(id);
+	public List<ProjecaoBomba> getBombas(@RequestParam String token){
+		return bombaRepository.getBombas(AuthControl.getInstance().getPostoId(token));
 	}
 
 }

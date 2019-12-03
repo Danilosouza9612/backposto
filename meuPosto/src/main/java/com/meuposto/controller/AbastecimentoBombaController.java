@@ -48,11 +48,11 @@ public class AbastecimentoBombaController {
 	@RequestMapping(value = "/query13", 
 					method=RequestMethod.GET,  
 					produces = { MediaType.APPLICATION_JSON_VALUE })
-	public String getAbastecimentosBomba(@RequestParam("id") int id,
+	public String getAbastecimentosBomba(@RequestParam("id") String token,
 																   @RequestParam("mes") int mes,
 																   @RequestParam("ano") int ano) throws JsonProcessingException{
 		ObjectMapper mapper = new ObjectMapper();
-		return mapper.writeValueAsString(this.context.getAbastecimentosBomba(id, mes, ano));
+		return mapper.writeValueAsString(this.context.getAbastecimentosBomba(AuthControl.getInstance().getPostoId(token), mes, ano));
 	}
 
 }

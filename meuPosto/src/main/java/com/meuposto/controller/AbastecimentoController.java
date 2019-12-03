@@ -59,9 +59,10 @@ public class AbastecimentoController implements Observable {
 	}
 
 	@GetMapping("/query07")
-	public List<NoSQLQuery7> getAbastecimentosPosto(@RequestParam Date data, @RequestParam int id) throws JsonProcessingException {
+	public List<NoSQLQuery7> getAbastecimentosPosto(@RequestParam Date data, @RequestParam String token) throws JsonProcessingException {
 		this.noSQL.setSQL(abastecimentoRepository);
-		return noSQL.getResult(id, data);
+		System.out.println(token);
+		return noSQL.getResult(AuthControl.getInstance().getPostoId(token), data);
 	}
 	@Override
 	public void notificar() {

@@ -30,16 +30,18 @@ public interface AbastecimentoRepository extends JpaRepository<Abastecimento, In
 	// 7)Dado um dia, listar todos os abastecimentos de um posto com nome do
 	// combustível, CPF do cliente, quantidade de litros e o preço naquele momento
 
-	@Query(value = "select b.POSTO_id as posto_id, a.data, c.nome as nome_cliente, c.cpf,cb.nome,a.qtd_litros,a.preco from COMBUSTIVEL as cb "
+	@Query(value = "select b.POSTO_id as posto_id, a.data, c.nome as nome_cliente, c.cpf,cb.nome,a.qtd_litros,a.preco, f.nome as frentista_nome from COMBUSTIVEL as cb "
 			+ "inner join BOMBA as b on cb.id = b.COMBUSTIVEL_id "
 			+ "inner join ABASTECIMENTO as a on b.id = a.BOMBA_id " 
 			+ "inner join CLIENTE as c on a.CLIENTE_id = c.id "
+			+ "inner join FRENTISTA as f on a.FRENTISTA_id = f.id "
 			/*+ "where DATE(a.data) = :data_param and b.POSTO_ID = :id_param "*/, nativeQuery = true)
 	public List<ProjecaoQuery07> getAbastecimentosPosto();
-	@Query(value = "select b.POSTO_id as posto_id, a.data, c.nome as nome_cliente, c.cpf,cb.nome,a.qtd_litros,a.preco from COMBUSTIVEL as cb " + 
+	@Query(value = "select b.POSTO_id as posto_id, a.data, c.nome as nome_cliente, c.cpf,cb.nome,a.qtd_litros,a.preco, f.nome as frentista_nome from COMBUSTIVEL as cb " + 
 			"inner join BOMBA as b on cb.id = b.COMBUSTIVEL_id " + 
 			"inner join ABASTECIMENTO as a on b.id = a.BOMBA_id " + 
 			"inner join CLIENTE as c on a.CLIENTE_id = c.id " + 
+			"inner join FRENTISTA as f on a.FRENTISTA_id = f.id " +
 			"order by a.id DESC LIMIT 1 ", nativeQuery=true)
 	public List<ProjecaoQuery07> getUltimoAbastecimento();
 }

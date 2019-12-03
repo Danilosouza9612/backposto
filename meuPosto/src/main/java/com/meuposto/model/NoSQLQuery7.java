@@ -19,6 +19,7 @@ public class NoSQLQuery7{
 	private String nome;
 	private float qtdLitros;
 	private float preco;
+	private String frentista;
 	
 	@JsonCreator
 	public NoSQLQuery7(@JsonProperty("idPosto") int idPosto,
@@ -27,7 +28,8 @@ public class NoSQLQuery7{
 					   @JsonProperty("cpf") String cpf,
 					   @JsonProperty("nome") String nome,
 					   @JsonProperty("qtdLitros") float qtdLitros,
-					   @JsonProperty("preco") float preco) {
+					   @JsonProperty("preco") float preco,
+					   @JsonProperty("frentista") String frentista) {
 		this.data= Calendar.getInstance().getTime();
 		this.data.setTime(data.get("$numberLong")+10800000);
 		this.nomeCliente=nomeCliente;
@@ -35,6 +37,7 @@ public class NoSQLQuery7{
 		this.nome=nome;
 		this.qtdLitros=qtdLitros;
 		this.preco=preco;
+		this.frentista=frentista;
 	}
 	
 
@@ -67,4 +70,8 @@ public class NoSQLQuery7{
 	public float getPreco() {
 		return preco;
 	}
+	public String getFrentista() {
+		return frentista;
+	}
+
 }

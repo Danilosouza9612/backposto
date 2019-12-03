@@ -11,7 +11,7 @@ public class AbastecimentoSQL {
 
 	public void novoAbastecimento(Abastecimento abastecimento) throws SQLException {
 		Connection connection = new ConexaoSQL().getConnection();
-		String sql = "CALL novo_abastecimento(?,?,?,?,?)";
+		String sql = "CALL novo_abastecimento(?,?,?,?,?,?)";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		
 		statement.setTimestamp(1, new Timestamp(abastecimento.getData().getTime()));
@@ -25,6 +25,7 @@ public class AbastecimentoSQL {
 			statement.setString(4, abastecimento.getCliente().getCpf());
 			statement.setString(5, abastecimento.getCliente().getNome());
 		}
+		statement.setInt(6, abastecimento.getFrentista().getId());
 		statement.execute();
 		statement.close();
 		connection.close();

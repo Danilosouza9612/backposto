@@ -20,16 +20,15 @@ public class AuthControl {
 		
 		return instance;
 	}
-	@SuppressWarnings("deprecation")
 	public String getToken(Login login, int postoId) {
 		return Jwts.builder()
+                .signWith(SignatureAlgorithm.HS512, key)
                 .setSubject(login.getCpf())
                 .claim("PostoID", Integer.toString(postoId))
                 .compact();
 	}
 	public int getPostoId(String token) {
 		Claims claims = Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
-		System.out.println(Integer.parseInt(claims.get("PostoID").toString()));
-		return Integer.parseInt(claims.get("UserID").toString());
+		return Integer.parseInt(claims.get("PostoID").toString());
 	}
 }

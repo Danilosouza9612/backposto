@@ -18,6 +18,9 @@ public class Abastecimento extends AbastecimentoAbstrato {
 	@ManyToOne
 	@JoinColumn(name = "CLIENTE_id")
 	private Pessoa cliente;
+	@ManyToOne
+	@JoinColumn(name = "FRENTISTA_id")
+	private Frentista frentista;
 
 	@JsonCreator
 	public Abastecimento(@JsonProperty("data") String data, 
@@ -25,7 +28,8 @@ public class Abastecimento extends AbastecimentoAbstrato {
 						 @JsonProperty("qtdLitros") float litros,
 						 @JsonProperty("bombaId") int bombaId, 
 						 @JsonProperty("cpf") String cpf, 
-						 @JsonProperty("nome") String nome)
+						 @JsonProperty("nome") String nome,
+						 @JsonProperty("frentistaId") int frentistaId)
 			throws IOException {
 		super(DateDeserialize.deserialize(data + " "+hora), 0, litros, new Bomba());
 		this.getBomba().setId(bombaId);
@@ -34,6 +38,8 @@ public class Abastecimento extends AbastecimentoAbstrato {
 			this.cliente.setCpf(cpf);
 			this.cliente.setNome(nome);
 		}
+		this.frentista = new Frentista();
+		this.frentista.setId(frentistaId);
 	}
 	public Pessoa getCliente() {
 		return cliente;
@@ -42,4 +48,11 @@ public class Abastecimento extends AbastecimentoAbstrato {
 	public void setCliente(Pessoa cliente) {
 		this.cliente = cliente;
 	}
+	public Frentista getFrentista() {
+		return frentista;
+	}
+	public void setFrentista(Frentista frentista) {
+		this.frentista = frentista;
+	}
+
 }

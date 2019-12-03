@@ -10,4 +10,5 @@ public interface ProjecaoQuery07 {
 	String getNome();
 	float getQtdLitros();
 	float getPreco();	
+	String getFrentista();
 }

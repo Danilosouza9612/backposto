@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,7 +37,7 @@ public class GerenteController {
 	public List<Gerente> getGerentes(){
 		return gerenteRepository.findAll();
 	}
-	@GetMapping("/login")
+	@PostMapping("/login")
 	public String getPostoId(@RequestBody String loginJson) throws SQLException, JsonParseException, JsonMappingException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
 		Login login = mapper.readValue(loginJson, Login.class);
